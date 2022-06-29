@@ -44,24 +44,24 @@ public class Server {
 				while (true) {
 					String cmd = in.readUTF();
 					if (cmd.equals("shutdown")) {
-						System.out.println("> Tắt máy");
+						System.out.println("> Shutdown");
 						if (shutdown()) {
-							out.writeUTF("Đang tắt máy...");
+							out.writeUTF("Shutdowned...");
 						} else {
-							out.writeUTF("Tắt máy thất bại.");
+							out.writeUTF("Failed to shutdown.");
 						}
 
 					} else if (cmd.equals("restart")) {
-						System.out.println("> Khởi động lại");
+						System.out.println("> Restart");
 						if (restart()) {
-							out.writeUTF("Đang khởi động lại...");
+							out.writeUTF("Restarted...");
 						} else {
-							out.writeUTF("Khởi động thất bại.");
+							out.writeUTF("Failed to restart");
 						}
 
 					} else if (cmd.equals("delete")) {
 						String path = in.readUTF();
-						System.out.println(String.format("> Xóa file %s", path));
+						System.out.println(String.format("> Delete file %s", path));
 
 						if (delete(path)) {
 							out.writeUTF("Deleted the file: " + path);
